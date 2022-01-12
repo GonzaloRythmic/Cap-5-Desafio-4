@@ -522,14 +522,18 @@ function hmrAcceptRun(bundle, id) {
 var _header = require("./components/header/header");
 var _title = require("./components/title/title");
 var _bodytext = require("./components/body-text/bodytext");
+var _form = require("./components/form/form");
+var _footer = require("./components/footer/footer");
 function main() {
     _header.initHeader();
     _title.initTitle();
     _bodytext.initBodyText();
+    _form.initForm();
+    _footer.initFooter();
 }
 main();
 
-},{"./components/header/header":"5QKwi","./components/title/title":"gqsfc","./components/body-text/bodytext":"21cmF"}],"5QKwi":[function(require,module,exports) {
+},{"./components/header/header":"5QKwi","./components/title/title":"gqsfc","./components/body-text/bodytext":"21cmF","./components/form/form":"82DHC","./components/footer/footer":"4IC2z"}],"5QKwi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "initHeader", ()=>initHeader
@@ -658,6 +662,10 @@ function initBodyText() {
             const divTitle = document.createElement("div");
             const divBodyText = document.createElement("div");
             const divBodyText2 = document.createElement("div");
+            const divBodyText3 = document.createElement("div");
+            const divBodyText4 = document.createElement("div");
+            const divBodyText5 = document.createElement("div");
+            const divTitle2 = document.createElement("div");
             const shadow = this.attachShadow({
                 mode: "open"
             });
@@ -666,8 +674,16 @@ function initBodyText() {
             <h1 class = "body-text-1">Subtitulo</h1>`;
             divBodyText.className = "body-text-2";
             divBodyText.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur iure voluptas quia accusantium voluptatum aspernatur provident et repudiandae quam veritatis, libero porro sit beatae laboriosam a aut consequatur quidem?";
-            divBodyText.className = "body-text-2";
-            divBodyText.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur iure voluptas quia accusantium voluptatum aspernatur provident et repudiandae quam veritatis, libero porro sit beatae laboriosam a aut consequatur quidem?";
+            divBodyText2.className = "body-text-2";
+            divBodyText2.textContent = "2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur iure voluptas quia accusantium voluptatum aspernatur provident et repudiandae quam veritatis, libero porro sit beatae laboriosam a aut consequatur quidem?";
+            divBodyText3.className = "body-text-3";
+            divBodyText3.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+            divTitle2.innerHTML = `
+            <h1 class = "body-text-1">Subtitulo 2</h1>`;
+            divBodyText4.className = "body-text-2";
+            divBodyText4.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur iure voluptas quia accusantium voluptatum aspernatur provident et repudiandae quam veritatis, libero porro sit beatae laboriosam a aut consequatur quidem?";
+            divBodyText5.className = "body-text-2";
+            divBodyText5.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur iure voluptas quia accusantium voluptatum aspernatur provident et repudiandae quam veritatis, libero porro sit beatae laboriosam a aut consequatur quidem?";
             style.innerHTML = `
                 .body-text-1 {
                     font-family: "Roboto"; 
@@ -684,13 +700,126 @@ function initBodyText() {
                     align-items: center;
                     justify-content: center;
                     margin-top: 33px;
+                }
+                .body-text-3{
+                    font-family: "Roboto"; 
+                    font-size: 18px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    margin-top: 33px;
                 }`;
             shadow.appendChild(divTitle);
             shadow.appendChild(divBodyText);
+            shadow.appendChild(divBodyText2);
+            shadow.appendChild(divBodyText3);
+            shadow.appendChild(divTitle2);
+            shadow.appendChild(divBodyText4);
+            shadow.appendChild(divBodyText5);
             shadow.appendChild(style);
         }
     }
     customElements.define("body-text-component", BodyTextComponent);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"82DHC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initForm", ()=>initForm
+);
+function initForm() {
+    class FormComponent extends HTMLElement {
+        constructor(){
+            super();
+            this.render();
+        }
+        render() {
+            const container = document.createElement("div");
+            const shadow = this.attachShadow({
+                mode: "open"
+            });
+            const style = document.createElement("style");
+            container.className = "container-form";
+            container.innerHTML = `
+            <label class = "label">Nombre</label>
+            <input class = "input" type = text class = "input" placeholder = "Ingrese su nombre"/>
+            <div class = "button-container">
+            <button class = "button-1">Botón</button> 
+            </div>        
+            <div class = "button-container">
+                <button class = "button-2">Volver</button>
+            </div>
+            `;
+            style.innerHTML = `
+            .container-form {
+                display: flex;
+                flex-direction: column;
+            }
+            .input {
+                border: solid black;
+                max-width: 312px;
+                padding: 17px 13px;
+            }
+            .button-container{
+                display:flex;
+                justify-content: center;
+                width: 100%;
+            }
+            .button-1 {
+                margin-top: 16px;
+                background-color: #9CBBE9;
+                max-width: 320px;
+                font-family: "Roboto";
+                font-size: 22px;
+            }
+            .button-2 {
+                margin-top: 69px;
+                max-width: 312px;
+                font-family: "Roboto";
+                font-size: 22px;
+            }
+            .label{
+                font-family: "Roboto";
+                font-size: 18px;
+            }
+            `;
+            shadow.appendChild(style);
+            shadow.appendChild(container);
+        }
+    }
+    customElements.define("form-component", FormComponent);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"4IC2z":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initFooter", ()=>initFooter
+);
+function initFooter() {
+    class FooterComponent extends HTMLElement {
+        constructor(){
+            super();
+            this.render();
+        }
+        render() {
+            const footer = document.createElement("footer");
+            const shadow = this.attachShadow({
+                mode: "open"
+            });
+            const style = document.createElement("style");
+            footer.className = "footer";
+            footer.textContent = "Footer";
+            style.innerHTML = `
+            .footer {
+                width: 100%;
+                height: 233px;
+                background-color: #FFA0EA;
+            }`;
+            shadow.appendChild(footer);
+            shadow.appendChild(style);
+        }
+    }
+    customElements.define("footer-component", FooterComponent);
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["hMwtF","7PGg5"], "7PGg5", "parcelRequire957c")
